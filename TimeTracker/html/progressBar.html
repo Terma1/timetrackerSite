@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../images/timer128.png">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <title translation="remaining study hours">Subject</title>
+</head>
+<body>
+<div class="page-container">
+    <div class="vertical-container">
+        <div class="global-menu">
+            <h1 class="c" translation="header"></h1>
+            <div class="language-selector">
+                <div class="language-dropdown" translation="change language"></div>
+                <div class="language-dropdown-content">
+                    <button class="language-buttons" type="button" id="select-german-language"
+                            translation="german"></button>
+                    <button class="language-buttons" type="button" id="select-english-language"
+                            translation="english"></button>
+                    <button class="language-buttons" type="button" id="select-russian-language"
+                            translation="russian"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-buttons-container">
+            <button class="global-buttons menu-buttons" translation="subjects" onclick="goToMain()"></button>
+            <button class="global-buttons menu-buttons" translation="statistic" onclick="goToStatistic()"></button>
+            <button class="global-buttons menu-buttons" translation="settings" onclick="goToSettings()"></button>
+        </div>
+        <div>
+            <label for="subject-select">Select Subject:</label>
+            <select id="subject-select"></select>
+
+            </div>
+            <div class="circular-progress-container">
+                <div class="time-info">
+                    <div>
+                        <span translation ="inv-zeit"></span>
+                        <span class="inverted-time"></span>
+                    </div>
+                    <div>
+                        <span translation ="ver-zeit"></span>
+                        <span class="remaining-time"></span>
+                    </div>
+                </div>
+                <div class="circular-progress">
+                    <span class="progress-value">0%</span>
+                </div>
+                <div class="subject-name">
+                    <span class="text">Subject 1</span>
+                </div>
+            </div>
+    </div>
+    <div id="footer" class="c" translation="timetracker version"></div>
+</div>
+
+<script type="application/javascript" src="../scripts/global.js"></script>
+<script type="application/javascript" src="../scripts/statistic.js"></script>
+<script type="application/javascript" src="../scripts/progressBar.js"></script>
+</body>
+</html>

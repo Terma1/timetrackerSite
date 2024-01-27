@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="1.111" tests="2" failures="0">
+  <testsuite name="Root Suite" timestamp="2024-01-22T21:56:15" tests="0" file="cypress\e2e\subjects.123.spec.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="template spec" timestamp="2024-01-22T21:56:15" tests="2" time="1.107" failures="0">
+    <testcase name="template spec should check header" time="0.157" classname="should check header">
+    </testcase>
+    <testcase name="template spec should create a subject and find its name" time="0.900" classname="should create a subject and find its name">
+    </testcase>
+  </testsuite>
+</testsuites>

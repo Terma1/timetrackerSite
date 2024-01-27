@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../images/timer128.png">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <title translation="settings">Settings</title>
+</head>
+<body>
+<!--...-->
+<div class="page-container">
+    <div class="vertical-container">
+        <div class="global-menu">
+            <h1 class="c" translation="header"></h1>
+            <div class="language-selector">
+                <div class="language-dropdown" translation="change language"></div>
+                <div class="language-dropdown-content">
+                    <button class="language-buttons" type="button" id="select-german-language"
+                            translation="german"></button>
+                    <button class="language-buttons" type="button" id="select-english-language"
+                            translation="english"></button>
+                    <button class="language-buttons" type="button" id="select-russian-language"
+                            translation="russian"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-buttons-container">
+            <button class="global-buttons menu-buttons" translation="subjects" onclick="goToMain()"></button>
+            <button class="global-buttons menu-buttons" translation="statistic" onclick="goToStatistic()"></button>
+            <button class="global-buttons-disabled menu-buttons" translation="settings"></button>
+        </div>
+        <!--Settings Content start-->
+
+        <!--Settings options -->
+        <div class="page-menu-button-container ">
+            <div class="subject-container settings-option-button-container">
+                <button class="global-buttons menu-buttons" translation="backup server"
+                        id="backup-server-button">Backup-Server
+                </button>
+            </div>
+
+            <div class="subject-container settings-option-button-container">
+                <button class="global-buttons menu-buttons" translation="upload button" id="upload-button">
+                    Upload
+                </button>
+            </div>
+
+            <div class="subject-container settings-option-button-container">
+                <button class="global-buttons menu-buttons" translation="reset button" id="reset-button">Reset
+                </button>
+            </div>
+
+
+        </div>
+        <!--Settings Content end-->
+
+        <dialog class="global-popup" id="connect-to-server-popup">
+
+            <form method="dialog" class="add-subject-popup-form" id="connect-to-server-popup-form">
+                <header class="global-popup-header">
+                    <h1 translation="connect to server"></h1>
+                </header>
+
+                <main>
+                    <div class="add-subject-popup-form-inputs-container"> <!-- change class name for all -->
+                        <div class="add-subject-popup-form-element">
+                            <label class="global-popup-label" for="connect-to-server-popup-form-input-username"
+                                   translation="username"></label>
+                            <input required class="global-popup-input" type="text" name="username"
+                                   id="connect-to-server-popup-form-input-username"/>
+                        </div>
+
+                        <div class="add-subject-popup-form-element">
+                            <label class="global-popup-label" for="connect-to-server-popup-form-input-password"
+                                   translation="password"></label>
+                            <input required class="global-popup-input" type="password" name="password"
+                                   id="connect-to-server-popup-form-input-password"/>
+                        </div>
+
+                        <div class="add-subject-popup-form-element">
+                            <label class="global-popup-label" for="connect-to-server-popup-form-input-url-toggle"
+                                   translation="server url toggle"></label>
+                            <input class="global-popup-input" type="checkbox" name="url-toggle"
+                                   id="connect-to-server-popup-form-input-url-toggle">
+                        </div>
+
+
+                        <div class="add-subject-popup-form-element">
+                            <label class="global-popup-label" for="connect-to-server-popup-form-input-url"
+                                   translation="server url"></label>
+                            <input required class="global-popup-input" type="url" name="url"
+                                   id="connect-to-server-popup-form-input-url" disabled>
+                        </div>
+                        <div class="add-subject-popup-form-element">
+                            <div id="connect-to-server-popup-message"></div>
+                        </div>
+                    </div>
+
+                </main>
+
+                <footer class="global-popup-footer">
+                    <button type="button" class="global-buttons global-popup-form-button" value="cancel"
+                            id="connect-to-server-popup-cancel-button" translation="cancel"></button>
+                    <button class="global-buttons global-popup-form-button global-popup-form-confirm-button"
+                            value="confirm" id="connect-to-server-popup-form-confirm-button"
+                            translation="connect"></button>
+                </footer>
+            </form>
+
+        </dialog>
+
+        <div id="footer" class="c" translation="timetracker version"></div>
+    </div>
+</div>
+<script type="application/javascript" src="../scripts/global.js"></script>
+<script type="application/javascript" src="../scripts/settings.js"></script>
+</body>
+</html>

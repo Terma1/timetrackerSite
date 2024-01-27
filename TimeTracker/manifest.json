@@ -1,0 +1,38 @@
+{
+  "name": "Time Tracker",
+  "short_name": "TimeTracker",
+  "author": "Kirill Dedov, Matswei Tsiareshka, Toni Kostov",
+  "start_url": "../html/main.html",
+  "background_color": "#8fd3f4",
+  "display": "minimal-ui",
+  "scope": "../html/",
+  "theme_color": "#8fd3f4",
+  "description": "An app for keeping track of your study time",
+  "icons": [
+    {
+      "src": "/images/timer512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/timer128.png",
+      "type": "image/png",
+      "sizes": "128x128",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screen.png",
+      "type": "image/png",
+      "sizes": "2560x1376",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/images/screen2.png",
+      "type": "image/png",
+      "sizes": "1284x2778"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "timetracker",
+  "version": "1.0.0",
+  "description": "app to track time",
+  "main": "html/main.html",
+  "scripts": {
+    "test": "cypress run --reporter junit",
+    "open": "cypress open e2e",
+    "serve": "http-server -o /"
+  },
+  "author": "me",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^13.6.3"
+  },
+
+  "dependencies": {
+    "typescript": "^5.3.3"
+  }
+}

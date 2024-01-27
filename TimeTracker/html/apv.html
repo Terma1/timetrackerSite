@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../images/timer128.png">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <title translation="analysis of working hours per subject">Subject</title>
+</head>
+<body>
+
+<div class="page-container">
+    <div class="vertical-container">
+        <div class="global-menu">
+            <h1 class="c" translation="header"></h1>
+            <div class="language-selector">
+                <div class="language-dropdown" translation="change language"></div>
+                <div class="language-dropdown-content">
+                    <button class="language-buttons" type="button" id="select-german-language"
+                            translation="german"></button>
+                    <button class="language-buttons" type="button" id="select-english-language"
+                            translation="english"></button>
+                    <button class="language-buttons" type="button" id="select-russian-language"
+                            translation="russian"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-buttons-container">
+            <button class="global-buttons menu-buttons" translation="subjects" onclick="goToMain()"></button>
+            <button class="global-buttons menu-buttons" translation="statistic" onclick="goToStatistic()"></button>
+            <button class="global-buttons menu-buttons" translation="settings" onclick="goToSettings()"></button>
+        </div>
+        <div class="dropdown-container">
+            <label for="subject-select" translation="select">Select Subject:</label>
+            <select id="subject-select"></select>
+        </div>
+        <body>
+        <canvas id="chart" width="800" height="350"></canvas>
+        </body>
+        <div id="footer" class="c" translation="timetracker version"></div>
+
+    </div>
+</div>
+
+<script type="application/javascript" src="../scripts/global.js"></script>
+<script type="application/javascript" src="../scripts/statistic.js"></script>
+<script type="application/javascript" src="../scripts/apv.js"></script>
+
+</body>
+</html>

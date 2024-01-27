@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../images/timer128.png">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <title>Subject</title>
+
+</head>
+<body>
+<!--...-->
+<div class="page-container">
+    <div class="vertical-container">
+        <div class="global-menu">
+            <h1 class="c" translation="header"></h1>
+            <div class="language-selector">
+                <div class="language-dropdown" translation="change language"></div>
+                <div class="language-dropdown-content">
+                    <button class="language-buttons" type="button" id="select-german-language"
+                            translation="german"></button>
+                    <button class="language-buttons" type="button" id="select-english-language"
+                            translation="english"></button>
+                    <button class="language-buttons" type="button" id="select-russian-language"
+                            translation="russian"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-buttons-container">
+            <button class="global-buttons menu-buttons" translation="subjects" onclick="goToMain()"></button>
+            <button class="global-buttons menu-buttons" translation="statistic" onclick="goToStatistic()"></button>
+            <button class="global-buttons menu-buttons" translation="settings" onclick="goToSettings()"></button>
+        </div>
+        <!--Subject Content start-->
+
+        <div id="subject-info-container">
+            <div class="divider-with-background" id="subject-info-name-and-semester-top-container">
+                <div id="subject-name"></div>
+                <div id="semester-number"></div>
+            </div>
+
+
+            <div id="subject-info-bottom-container" class="divider-with-background">
+                <div>
+                    <div id="number-of-timetracks"></div>
+                    <div id="progression-subject"></div>
+                </div>
+            </div>
+            <div id="search-field-line" class="divider-with-background">
+                <input id="search-field" type="text" placeholder="Search here..">
+
+                <div class="global-checkbox-container">
+                    <input type="checkbox" id="hideWithBreakCheckbox" class="global-checkbox">
+                    <label for="hideWithBreakCheckbox" translation="hide with breaks"
+                           class="global-checkbox-label"></label>
+                </div>
+                <form class="sort">
+                    <label for="sort-dropdown-content" translation="sort by" class="global-sort-label"></label>
+                    <select name="sort-dropdown-content" id="sort-dropdown-content">
+                        <option value="start-date-desc" translation="start time desc"></option>
+                        <option value="start-date-asc" translation="start time asc"></option>
+                        <option value="study-duration-desc" translation="study desc"></option>
+                        <option value="study-duration-asc" translation="study asc"></option>
+                        <option value="pause-duration-desc" translation="break desc"></option>
+                        <option value="pause-duration-asc" translation="break asc"></option>
+                    </select>
+                </form>
+            </div>
+
+        </div>
+        <div class="global-list-container" id="timetracks-container">
+        </div>
+
+
+        <div id="footer" class="c" translation="timetracker version"></div>
+    </div>
+    <!--popups-->
+    <!--edit popup-->
+    <dialog class="global-popup" id="edit-timetrack-popup">
+        <form method="dialog" id="edit-timetrack-popup-form" class="global-add-popup-form">
+            <h1 translation="edit the timetrack"></h1>
+            <div class="timetrack-popup-time-container">
+                <div class="timetrack-popup-study-duration-container">
+
+
+                    <div class="timetrack-popup-start-time-container">
+
+                        <label for="start-date-edit-popup" translation="start time"></label>
+                        <input required type="datetime-local" id="start-date-edit-popup"
+                               name="start-date-edit-popup" class="global-popup-input timetrack-popup-input">
+
+
+                    </div>
+                    <div class="timetrack-popup-end-time-container">
+
+                        <label for="end-date-edit-popup" translation="end time"></label>
+                        <input required type="datetime-local" id="end-date-edit-popup"
+                               name="end-date-edit-popup" class="global-popup-input timetrack-popup-input">
+
+                    </div>
+
+                </div>
+
+
+                <div class="timetrack-popup-break-duration-container"><br>
+                    <div translation="break duration"></div>
+                    <br>
+                    <label for="break-duration-hours-edit-popup" translation="hours"></label>
+                    <input type="number" id="break-duration-hours-edit-popup" name="break-duration-hours-edit-popup"
+                           placeholder="0" class="global-popup-input timetrack-popup-input">
+                    <label for="break-duration-minutes-edit-popup" translation="minutes"></label>
+                    <input type="number" id="break-duration-minutes-edit-popup"
+                           name="break-duration-minutes-edit-popup" placeholder="0"
+                           class="global-popup-input timetrack-popup-input">
+                </div>
+
+            </div>
+
+            <div class="timetrack-popup-buttons-container">
+                <button type="button" id="close-edit-timetrack-popup-button" translation="cancel"
+                        class="global-buttons global-popup-form-button"></button>
+                <button type="submit" translation="edit"
+                        class="global-buttons global-popup-form-button global-popup-form-confirm-button"></button>
+            </div>
+        </form>
+    </dialog>
+    <!--Delete Timetrack Popup-->
+    <dialog class="global-popup" id="delete-timetrack-popup">
+
+        <form method="dialog" class="delete-subject-popup-form" id="delete-timetrack-popup-form">
+            <header class="global-popup-header">
+                <h1 translation="remove timetrack"></h1>
+            </header>
+
+            <main class="global-popup-main">
+                <div id="delete-timetrack-popup-subject-name-container">
+
+                </div>
+                <div>
+
+                    <p translation="action cannot be undone"></p>
+                </div>
+            </main>
+
+            <footer class="global-popup-footer">
+                <button type="button" class="global-buttons global-popup-form-button" value="cancel"
+                        id="delete-timetrack-popup-cancel-button" translation="no"></button>
+                <button type="button"
+                        class="global-buttons global-popup-form-button global-popup-form-confirm-button"
+                        value="confirm" id="delete-timetrack-popup-form-confirm-button" translation="yes"></button>
+            </footer>
+        </form>
+
+    </dialog>
+    <!--add popup-->
+    <dialog class="global-popup" id="add-timetrack-popup">
+        <form method="dialog" id="add-timetrack-popup-form" class="global-add-popup-form">
+            <h1 translation="add the timetrack"></h1>
+            <div class="timetrack-popup-time-container">
+                <div class="timetrack-popup-study-duration-container">
+
+
+                    <div class="timetrack-popup-start-time-container">
+
+                        <label for="start-date-add-popup" translation="start time"></label>
+                        <input required type="datetime-local" id="start-date-add-popup" name="start-date-add-popup"
+                               class="global-popup-input timetrack-popup-input">
+
+
+                    </div>
+                    <div class="timetrack-popup-end-time-container">
+
+                        <label for="end-date-add-popup" translation="end time"></label>
+                        <input required type="datetime-local" id="end-date-add-popup" name="end-date-add-popup"
+                               class="global-popup-input timetrack-popup-input">
+
+                    </div>
+
+                </div>
+
+
+                <div class="timetrack-popup-break-duration-container"><br>
+
+                    <div translation="break duration"></div>
+                    <br>
+                    <label for="break-duration-hours-add-popup" translation="hours"></label>
+                    <input type="number" id="break-duration-hours-add-popup"
+                           name="break-duration-hours-add-popup" placeholder="0"
+                           class="global-popup-input timetrack-popup-input">
+                    <label for="break-duration-minutes-add-popup" translation="minutes"></label>
+                    <input type="number" id="break-duration-minutes-add-popup"
+                           name="break-duration-minutes-add-popup"
+                           placeholder="0" class="global-popup-input timetrack-popup-input">
+                </div>
+
+            </div>
+
+            <div class="timetrack-popup-buttons-container">
+                <button type="button" id="close-add-timetrack-popup-button" translation="cancel"
+                        class="global-buttons global-popup-form-button"></button>
+                <button type="submit" translation="save"
+                        class="global-buttons global-popup-form-button global-popup-form-confirm-button"></button>
+            </div>
+
+        </form>
+    </dialog>
+</div>
+<script src="../scripts/global.js"></script>
+<script src="../scripts/subject.js"></script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../images/timer128.png">
+    <link rel="manifest" href="../manifest.json">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <title translation="header">Time Tracker</title>
+
+</head>
+<body>
+<!--...-->
+<div class="page-container">
+    <div class="vertical-container">
+        <div class="global-menu">
+            <h1 class="c" translation="header"></h1>
+            <div class="language-selector">
+                <div class="language-dropdown" translation="change language"></div>
+                <div class="language-dropdown-content">
+                    <button class="language-buttons" type="button" id="select-german-language"
+                            translation="german"></button>
+                    <button class="language-buttons" type="button" id="select-english-language"
+                            translation="english"></button>
+                    <button class="language-buttons" type="button" id="select-russian-language"
+                            translation="russian"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-buttons-container">
+            <button class="global-buttons-disabled menu-buttons" translation="subjects"></button>
+            <button class="global-buttons menu-buttons" translation="statistic" onclick="goToStatistic()"></button>
+            <button class="global-buttons menu-buttons" translation="settings" onclick="goToSettings()"></button>
+        </div>
+        <!--MAIN Content start-->
+        <div id="search-field-line" class="divider-with-background">
+            <input id="search-field" type="text" placeholder="Search here..">
+
+
+            <div class="global-checkbox-container">
+                <input type="checkbox" id="hide-completed-checkbox" class="global-checkbox">
+                <label for="hide-completed-checkbox" translation="hide completed"
+                       id="hide-completed-checkbox-label" class="global-checkbox-label"></label>
+            </div>
+
+            <form class="sort">
+                <label for="sort-dropdown-content" translation="sort by" id="sort-by-label" class="global-sort-label"></label>
+                <select name="sort-dropdown-content" id="sort-dropdown-content">
+                    <option value="date-of-creation-desc" translation="date of creation desc"></option>
+                    <option value="date-of-creation-asc" translation="date of creation asc"></option>
+                    <option value="alphabetically-desc" translation="alphabetically desc"></option>
+                    <option value="alphabetically-asc" translation="alphabetically asc"></option>
+                    <!--                        <option value="pause-duration-desc" translation="break desc"></option>-->
+                    <!--                        <option value="pause-duration-asc" translation="break asc"></option>-->
+                </select>
+            </form>
+        </div>
+
+
+        <!--Subject list -->
+        <div class="global-list-container" id="subjects-container">
+
+            <div class="global-list-element-container">
+                <div class="global-list-element-container">
+                    <button class="global-buttons global-add-button" id="add-subject-button">+</button>
+                </div>
+            </div>
+
+
+            <!--MAIN Content end-->
+        </div>
+
+        <!--Add Subject Popup-->
+        <dialog class="global-popup" id="add-subject-popup">
+
+            <form method="dialog" class="global-add-popup-form" id="add-subject-popup-form">
+                <header class="global-popup-header">
+                    <h1 translation="add the subject"></h1>
+                </header>
+
+                <main>
+                    <div class="add-subject-popup-form-inputs-container">
+                        <div class="add-subject-popup-form-element">
+                            <label class="global-popup-label" for="add-subject-popup-form-input-subject-name"
+                                   translation="subject name"></label>
+                            <input required class="global-popup-input" type="text" name="subject-name"
+                                   id="add-subject-popup-form-input-subject-name"/>
+                        </div>
+
+                        <div class="add-subject-popup-form-element">
+                            <label class="global-popup-label" for="add-subject-popup-form-input-subject-semester"
+                                   translation="semester"></label>
+                            <input required class="global-popup-input" type="text" name="semester"
+                                   id="add-subject-popup-form-input-subject-semester"/>
+                        </div>
+
+                        <div class="add-subject-popup-form-element">
+                            <label class="global-popup-label" for="add-subject-popup-form-input-required-hours"
+                                   translation="expected hours"></label>
+                            <input required class="global-popup-input" type="number" min="0" name="required-hours"
+                                   id="add-subject-popup-form-input-required-hours">
+                        </div>
+                    </div>
+                </main>
+
+                <footer class="global-popup-footer">
+                    <button type="button" class="global-buttons global-popup-form-button" value="cancel"
+                            id="add-subject-popup-cancel-button" translation="cancel"></button>
+                    <button class="global-buttons global-popup-form-button global-popup-form-confirm-button"
+                            value="confirm" id="add-subject-popup-form-confirm-button" translation="save"></button>
+                </footer>
+            </form>
+
+        </dialog>
+
+        <!--Delete Subject Popup-->
+        <dialog class="global-popup" id="delete-subject-popup">
+
+            <form method="dialog" class="delete-subject-popup-form" id="delete-subject-popup-form">
+                <header class="global-popup-header">
+                    <h1 translation="remove subject"></h1>
+                </header>
+
+                <main class="global-popup-main">
+                    <div id="delete-subject-popup-subject-name-container">
+
+                    </div>
+                    <div>
+
+                        <p translation="action cannot be undone"></p>
+                    </div>
+                </main>
+
+                <footer class="global-popup-footer">
+                    <button type="button" class="global-buttons global-popup-form-button" value="cancel"
+                            id="delete-subject-popup-cancel-button" translation="no"></button>
+                    <button type="button"
+                            class="global-buttons global-popup-form-button global-popup-form-confirm-button"
+                            value="confirm" id="delete-subject-popup-form-confirm-button"
+                            translation="yes"></button>
+                </footer>
+            </form>
+
+        </dialog>
+
+        <!--Edit Subject Popup-->
+        <dialog class="global-popup" id="edit-subject-popup">
+
+            <form method="dialog" class="add-subject-popup-form" id="edit-subject-popup-form">
+                <header class="global-popup-header">
+                    <h1 translation="edit the subject"></h1>
+                </header>
+
+                <main>
+                    <div class="add-subject-popup-form-inputs-container">
+                        <div class="add-subject-popup-form-element">
+                            <label class="global-popup-label" for="edit-subject-popup-form-input-subject-name"
+                                   translation="subject name"></label>
+                            <input required class="global-popup-input" type="text" name="subject-name"
+                                   id="edit-subject-popup-form-input-subject-name"/>
+                        </div>
+
+                        <div class="add-subject-popup-form-element">
+                            <label class="global-popup-label" for="edit-subject-popup-form-input-semester"
+                                   translation="semester"></label>
+                            <input required class="global-popup-input" type="text" name="semester"
+                                   id="edit-subject-popup-form-input-semester"/>
+                        </div>
+
+                        <div class="add-subject-popup-form-element">
+                            <label class="global-popup-label" for="edit-subject-popup-form-input-required-hours"
+                                   translation="expected hours"></label>
+                            <input required class="global-popup-input" type="number" min="0" name="required-hours"
+                                   id="edit-subject-popup-form-input-required-hours">
+                        </div>
+                    </div>
+                </main>
+
+                <footer class="global-popup-footer">
+                    <button type="button" class="global-buttons global-popup-form-button" value="cancel"
+                            id="edit-subject-popup-form-cancel-button" translation="cancel"></button>
+                    <button type="button"
+                            class="global-buttons global-popup-form-button global-popup-form-confirm-button"
+                            value="confirm" id="edit-subject-popup-form-confirm-button" translation="save"></button>
+                </footer>
+            </form>
+
+        </dialog>
+
+        <div id="footer" class="c" translation="timetracker version"></div>
+    </div>
+</div>
+<script type="application/javascript" src="../scripts/global.js"></script>
+<script type="application/javascript" src="../scripts/main.js"></script>
+</body>
+
+</html>
